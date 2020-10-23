@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Trail Task - Sprout Therapy Assignment</title>
+    <script type="module">
+        import {assign} from './substitution.js';
+        window.calculate = () => {
+            const resultElement = document.getElementsByClassName('result')[0];
+            try {
+                const result = assign({
+                    A: 'true' === document.getElementsByName('valueA')[0].value,
+                    B: 'true' === document.getElementsByName('valueB')[0].value,
+                    C: 'true' === document.getElementsByName('valueC')[0].value,
+                    D: Number(document.getElementsByName('valueD')[0].value),
+                    E: Number(document.getElementsByName('valueE')[0].value),
+                    F: Number(document.getElementsByName('valueF')[0].value)
+                });
+                resultElement.innerText = JSON.stringify(result);
+            } catch (err) {
+                resultElement.innerText = err.toString();
+            }
+        };
+
+    </script>
+</head>
+<body>
+<form onsubmit="return false" id="form">
+    <label for="valueA">A = </label>
+    <select name="valueA" id="valueA">
+        <option value="true" selected>True</option>
+        <option value="false">False</option>
+    </select>
+    <br><br>
+    <label for="valueB">B = </label>
+    <select name="valueB" id="valueB">
+        <option value="true" selected>True</option>
+        <option value="false">False</option>
+    </select>
+    <br><br>
+    <label for="valueC">C = </label>
+    <select name="valueC" id="valueC">
+        <option value="true" selected>True</option>
+        <option value="false">False</option>
+    </select>
+    <br><br>
+
+    <label for="valueD">D = </label>
+    <input type="number" id="valueD" name="valueD" value="1" step="any">
+    <br><br>
+
+    <label for="valueE">E = </label>
+    <input type="number" id="valueE" name="valueE" value="1">
+    <br><br>
+
+    <label for="valueF">D = </label>
+    <input type="number" id="valueF" name="valueF" value="1">
+    <br><br>
+    <input type="submit" value="Calculate" onclick="calculate()">
+</form>
+<br>
+<div class="result"></div>
+</body>
+</html>
